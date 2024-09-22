@@ -1,6 +1,7 @@
 'use client'
 
 
+import { HomePage } from "@/components/home-page";
 import dynamic from "next/dynamic";
 
 const Scene = dynamic(() => import('./component/Scene'), {
@@ -12,7 +13,8 @@ const Scene = dynamic(() => import('./component/Scene'), {
 export default function Home() {
   return (
     <div  className="w-full h-full bg-black">
-      <Scene/>
+      <HomePage/>
+      
     </div>
   )
 }
