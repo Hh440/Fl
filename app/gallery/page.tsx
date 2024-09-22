@@ -13,15 +13,10 @@ const animations = [
 
 export default function GalleryPage() {
   const [activeAnimation, setActiveAnimation] = useState(null)
-  const [isFullscreen, setIsFullscreen] = useState(false)
   const canvasRef = useRef(null)
 
-  const loadAndPlayAnimation = (animationAction:any) => {
+  const loadAndPlayAnimation = (animationAction) => {
     setActiveAnimation(animationAction)
-  }
-
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen)
   }
 
   return (
@@ -52,14 +47,8 @@ export default function GalleryPage() {
           </div>
 
           {/* Animation Display */}
-          <div
-            className={`${
-              isFullscreen
-                ? 'fixed inset-0 z-50 bg-black'
-                : 'w-full md:w-2/3 bg-gray-900 border border-gray-700 rounded-lg shadow-lg'
-            } transform transition-transform duration-500`}
-          >
-            <div className="p-6 relative">
+          <div className="w-full md:w-2/3 bg-gray-900 border border-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <div className="p-6">
               <h2 className="text-3xl font-semibold mb-6 text-gray-100 border-b border-gray-600 pb-2">
                 {activeAnimation || "Select an animation"}
               </h2>
@@ -69,14 +58,6 @@ export default function GalleryPage() {
                 {activeAnimation === 'sceneAnimation' && <Scene canvasRef={canvasRef} />}
                 {/* activeAnimation === 'landingAnimation' && <Landing canvasRef={canvasRef} /> */}
               </div>
-
-              {/* Fullscreen Toggle Button */}
-              <Button
-                onClick={toggleFullscreen}
-                className="absolute top-4 right-4 bg-gray-700 hover:bg-gray-600 text-gray-100 py-2 px-4 rounded-lg"
-              >
-                {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
-              </Button>
             </div>
           </div>
         </div>
