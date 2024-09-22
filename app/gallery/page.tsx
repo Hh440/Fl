@@ -2,10 +2,9 @@
 
 import { useState, useRef } from 'react'
 import { Button } from "@/components/ui/button"
-import Scene from '../component/Scene' // Importing animations from scene.tsx
-// Importing animations from landing.tsx
+import Scene from '../component/Scene' 
+import Camp from '../camping/Camp'
 
-// Sample 3D animations
 const animations = [
   { name: 'Animation 1', action: 'sceneAnimation' }, // This will load from scene.tsx
   { name: 'Animation 2', action: 'landingAnimation' }, // This will load from landing.tsx
@@ -15,14 +14,14 @@ export default function GalleryPage() {
   const [activeAnimation, setActiveAnimation] = useState(null)
   const canvasRef = useRef(null)
 
-  const loadAndPlayAnimation = (animationAction) => {
+  const loadAndPlayAnimation = (animationAction:any) => {
     setActiveAnimation(animationAction)
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-800 text-gray-100">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 via-cyan-500 to-red-500 text-transparent bg-clip-text">
           3D Animation Gallery
         </h1>
         <div className="flex flex-col md:flex-row gap-8">
@@ -56,7 +55,7 @@ export default function GalleryPage() {
                 <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
                 {/* Conditionally render animations based on the selected button */}
                 {activeAnimation === 'sceneAnimation' && <Scene canvasRef={canvasRef} />}
-                {/* activeAnimation === 'landingAnimation' && <Landing canvasRef={canvasRef} /> */}
+                {activeAnimation === 'landingAnimation' && <Camp canvasRef={canvasRef} /> }
               </div>
             </div>
           </div>
