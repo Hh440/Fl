@@ -4,10 +4,12 @@ import { useState, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import Scene from '../component/Scene' 
 import Camp from '../camping/Camp'
+import Ball from '../bouncing/Ball'
 
 const animations = [
-  { name: 'Animation 1', action: 'sceneAnimation' }, // This will load from scene.tsx
-  { name: 'Animation 2', action: 'landingAnimation' }, // This will load from landing.tsx
+  { name: '3D Text', action: 'sceneAnimation' }, 
+  { name: 'Animation 2', action: 'landingAnimation' }, 
+  { name:'Falling Ball', action:"ballFalling"}
 ]
 
 export default function GalleryPage() {
@@ -56,6 +58,7 @@ export default function GalleryPage() {
                 {/* Conditionally render animations based on the selected button */}
                 {activeAnimation === 'sceneAnimation' && <Scene canvasRef={canvasRef} />}
                 {activeAnimation === 'landingAnimation' && <Camp canvasRef={canvasRef} /> }
+                {activeAnimation==='ballFalling' && <Ball canvasRef={canvasRef}/>}
               </div>
             </div>
           </div>
