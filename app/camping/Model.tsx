@@ -18,7 +18,7 @@ const Model = ()=>{
     const meshFitCameraHome= useRef<Mesh>(null)
     const [currentPage,setCurrentPage]= useAtom(currentPageAtom)
     const meshFitCameraStore = useRef<Mesh>(null);
-    const textMaterial = useRef<MeshBasicMaterial|null>(null);
+    const textMaterial = useRef<MeshBasicMaterial>(null);
 
 
     useFrame((_, delta) => {
