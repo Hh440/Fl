@@ -1,44 +1,42 @@
 "use client"
 
-import { useState, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import Scene from '../component/Scene' 
-import Camp from '../camping/Camp'
-import Ball from '../bouncing/Ball'
 
 const animations = [
-  { name: '3D Text', action: 'sceneAnimation' }, 
-  { name: 'Animation 2', action: 'landingAnimation' }, 
-  { name:'Falling Ball', action:"ballFalling"}
+  { name: '3D Text', action: 'Scene' }, 
+  { name: 'Camping Animation', action: 'Camp' }, 
+  { name: 'Falling Ball', action: 'Ball' }
 ]
 
 export default function GalleryPage() {
-  const [activeAnimation, setActiveAnimation] = useState(null)
-  const canvasRef = useRef(null)
+  const router = useRouter()
 
-  const loadAndPlayAnimation = (animationAction:any) => {
-    setActiveAnimation(animationAction)
+  const navigateToAnimation = (animation: string) => {
+    router.push(`/gallery/${animation}`)
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-800 text-gray-100">
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-gray-100 flex flex-col items-center">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 via-cyan-500 to-red-500 text-transparent bg-clip-text">
+        {/* Title */}
+        <h1 className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 via-cyan-500 to-red-500 text-transparent bg-clip-text animate-pulse">
           3D Animation Gallery
         </h1>
-        <div className="flex flex-col md:flex-row gap-8">
+
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
           {/* Animation Selection */}
-          <div className="w-full md:w-1/3 bg-gray-900 border border-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+          <div className="w-full md:w-1/3 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300">
             <div className="p-6">
-              <h2 className="text-3xl font-semibold mb-6 text-gray-100 border-b border-gray-600 pb-2">
-                Animations
+              <h2 className="text-4xl font-semibold mb-6 text-gray-100 border-b border-gray-600 pb-4 tracking-wide">
+                Choose Animation
               </h2>
-              <div className="h-[500px] w-full rounded-md border border-gray-700 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+              <div className="h-[500px] w-full rounded-md border border-gray-700 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 bg-gray-800 shadow-inner">
                 {animations.map((animation) => (
                   <Button
                     key={animation.name}
-                    onClick={() => loadAndPlayAnimation(animation.action)}
-                    className="w-full mb-3 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-indigo-600 hover:to-purple-600 text-gray-100 font-semibold py-2 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
+                    onClick={() => navigateToAnimation(animation.action)}
+                    className="w-full mb-4 py-3 bg-gradient-to-r from-zinc-600 via-cyan-600 to-stone-500 hover:from-gray-600 hover:to-teal-600 text-white font-bold rounded-lg shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
                   >
                     {animation.name}
                   </Button>
@@ -47,21 +45,7 @@ export default function GalleryPage() {
             </div>
           </div>
 
-          {/* Animation Display */}
-          <div className="w-full md:w-2/3 bg-gray-900 border border-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-            <div className="p-6">
-              <h2 className="text-3xl font-semibold mb-6 text-gray-100 border-b border-gray-600 pb-2">
-                {activeAnimation || "Select an animation"}
-              </h2>
-              <div className="w-full aspect-square bg-black rounded-lg overflow-hidden border border-gray-700 relative shadow-lg">
-                <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
-                {/* Conditionally render animations based on the selected button */}
-                {activeAnimation === 'sceneAnimation' && <Scene canvasRef={canvasRef} />}
-                {activeAnimation === 'landingAnimation' && <Camp canvasRef={canvasRef} /> }
-                {activeAnimation==='ballFalling' && <Ball canvasRef={canvasRef}/>}
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
