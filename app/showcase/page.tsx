@@ -1,15 +1,15 @@
 'use client'
 
 import { useRef } from "react"
-import Ball from "../bouncing/Ball"
+import Moving from "../transition/Moving"
 
 
 const ShowCase = ()=>{
 
     const canvasRef= useRef(null)
     return(
-        <div className="w-full h-full bg-slate-900">
-            <Ball canvasRef={canvasRef}/>
+        <div className="w-full h-full">
+           <Moving canvasRef={canvasRef}/>
         </div>
     )
 }
