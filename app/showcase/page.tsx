@@ -10,7 +10,7 @@ const ShowCase = ()=>{
     const canvasRef= useRef(null)
     return(
         <div className="w-full h-full">
-           <Ball canvasRef={canvasRef}/>
+           <Moving canvasRef={canvasRef}/>
         </div>
     )
 }
