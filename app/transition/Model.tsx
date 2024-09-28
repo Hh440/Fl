@@ -5,13 +5,13 @@ import { stat } from "fs"
 import { useControls } from "leva"
 import { useAtom } from "jotai"
 import { useRef } from "react"
-import { slideAtom } from "./Overlay"
+
 
 
 const CameraHandler = ({slideDistance}:any)=>{
     const viewport = useThree((state)=>state.viewport)
     const cameraControls= useRef<CameraControls>(null)
-    const [slide] = useAtom(slideAtom);
+  
     const lastSlide = useRef(0)
 
     const {dollyDistance}= useControls({
@@ -35,8 +35,8 @@ const CameraHandler = ({slideDistance}:any)=>{
             )
 
 
-            await cameraControls.current.setLookAt(
-                (slide+1)*(viewport.width+slideDistance),
+            /*await cameraControls.current.setLookAt(
+              //  (slide+1)*(viewport.width+slideDistance),
                 1,
                 dollyDistance,
                 slide*(viewport.width+slideDistance),
@@ -55,7 +55,7 @@ const CameraHandler = ({slideDistance}:any)=>{
                 true
             )
 
-            
+            */
 
 
 
