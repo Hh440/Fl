@@ -16,8 +16,8 @@ import {
   export const scenes = [
     {
       path: "models/mercedes1.glb",
-      mainColor: "blue",
-      name: "Cybertruck",
+      mainColor: "#A5E2EA",
+      name: "Model 1",
       description:
         "Sport car making the legend",
       price: 72000,
@@ -25,16 +25,16 @@ import {
     },
     {
       path: "models/mercedes2.glb",
-      mainColor: "#c0ffe1",
-      name: "Model 3",
+      mainColor: "#fff",
+      name: "Model 2",
       description: "The car of the future",
       price: 29740,
       range: 576,
     },
     {
       path: "models/mercedes-benz.glb",
-      mainColor: "#ffdec0",
-      name: "Semi",
+      mainColor: "#fff",
+      name: "Model 3",
       description: "The Future of Sport cars",
       price: 150000,
       range: 800,

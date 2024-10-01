@@ -5,6 +5,7 @@ import Model from "./Model";
 import { OrbitControls } from "@react-three/drei";
 import { Leva } from "leva";
 import { Overlay } from "./Overlay";
+import { Suspense } from "react";
 
 interface MovingProps {
     canvasRef: MutableRefObject<HTMLCanvasElement | null>;
@@ -16,11 +17,15 @@ const Moving =({ canvasRef }: MovingProps)=>{
         <Leva hidden/>
         <Overlay/>
         
-       <Canvas shadows camera={{position:[2,1,-5], fov:75}}>
+       <Canvas shadows camera={{position:[0,0,5], fov:30}} >
         <OrbitControls/>
           <color attach="background" args={["#ececec"]}/>
-
+          
+          <Suspense>
             <Model/>
+          </Suspense>
+
+            
          
        </Canvas>
        </>

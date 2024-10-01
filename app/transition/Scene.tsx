@@ -41,10 +41,15 @@ import {
       <>
         <color attach="background" args={["#ffffff"]} />
         <group {...props} dispose={null}>
-          <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.5} />
+          <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.2} />
           <OrbitControls
-            
-          />
+            autoRotate
+            enablePan={false}
+            maxPolarAngle={DEG2RAD * 75}
+            minDistance={6}
+            maxDistance={10}
+            autoRotateSpeed={0.5}
+           />
           <primitive object={scene} scale={ratioScale} />
           <ambientLight intensity={0.1} color="pink" />
           <AccumulativeShadows

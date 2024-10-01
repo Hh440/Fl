@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef } from "react"
-import Moving from "../transition/Moving"
-import Ball from "../bouncing/Ball"
+
+import Scene from "../coder/Scene"
 
 
 const ShowCase = ()=>{
@@ -10,7 +10,7 @@ const ShowCase = ()=>{
     const canvasRef= useRef(null)
     return(
         <div className="w-full h-full">
-           <Moving canvasRef={canvasRef}/>
+           <Scene canvasRef={canvasRef}/>
         </div>
     )
 }
